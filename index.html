@@ -10,6 +10,7 @@
       form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
       #messages { list-style-type: none; margin: 0; padding: 0; }
       #messages li { padding: 5px 10px; }
+      #recibido {background-color: #eee;}
     </style>
   </head>
   <body>
@@ -31,7 +32,7 @@
     return false;
   });
   socket.on('mensajeRecibido', function(msg){
-    $('#messages').append($('< style="background-color:lightgrey" li>').text(msg));
+    $('#messages').append($('<li id="recibido">').text(msg));
   });
 
 </script>
