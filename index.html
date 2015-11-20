@@ -26,7 +26,7 @@
   var socket = io();
   $('form').submit(function(){
     //socket.emit('chatMessage', $('#m').val());
-    $('#messages').append($('<li>').text($('#m').val());
+    $('#messages').append($('<li>').text($('#m').val()));
     socket.emit('mensajeDirecto', 'teo', $('#m').val());
     $('#m').val('');
     return false;
