@@ -28,6 +28,7 @@
     //socket.emit('chatMessage', $('#m').val());
     socket.emit('mensajeDirecto', 'teo', $('#m').val());
     $('#m').val('');
+    $('#messages').append($('<li>').text($('#m').val()));
     return false;
   });
   socket.on('mensajeRecibido', function(msg){
