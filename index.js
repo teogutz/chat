@@ -41,6 +41,11 @@ io.on('connection', function(socket){
   	console.log('NUEVO USER: ' + username);
   	users[username] = socket;
   	socket.username = username;
+  	
+  	console.log("Hay " + Object.keys(users).length + " usuarios conectados:");
+  	for key in Object.keys(users) {
+  		console.log(key);
+  	}
   });
   
   socket.on('disconnect', function(){
