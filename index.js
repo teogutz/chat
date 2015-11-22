@@ -19,7 +19,9 @@ app.get('/', function(req, res){
 var users = {}
 
 io.on('connection', function(socket){
-	socket.emit('connect');	
+
+  socket.emit('connect');	
+  
   socket.on('chatMessage', function(msg){
     console.log('message: ' + msg);
   });
@@ -30,14 +32,19 @@ io.on('connection', function(socket){
   
   socket.on('mensajeDirecto', function(user, msg){
   	var socketDestino = users[user];
-  	console.log('NUEVO MENSAJE A '+ user)
-  	console.log('MENSAJE '+msg)
+  	console.log('NUEVO MENSAJE A '+ user);
+  	console.log('MENSAJE '+msg);
   	socketDestino.emit('mensajeRecibido', msg);
   });
   
   socket.on('username', function(username){
   	console.log('NUEVO USER: ' + username);
   	users[username] = socket;
+  	socket.username = username;
+  });
+  
+  socket.on('disconnect', function(){
+  	console.log("SE DESCONECTO: " + socket.username);
   });
 });
 
