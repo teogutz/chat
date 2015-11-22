@@ -41,16 +41,15 @@ io.on('connection', function(socket){
   	console.log('NUEVO USER: ' + username);
   	users[username] = socket;
   	socket.username = username;
-  	
-  	console.log("Hay " + Object.keys(users).length + " usuarios conectados:");
-  	for (var key in users) {
-  		console.log(key);
-  	}
   });
   
   socket.on('disconnect', function(){
   	console.log("SE DESCONECTO: " + socket.username);
   	delete users[socket.username];
+  	console.log("Hay " + Object.keys(users).length + " usuarios conectados:");
+  	for (var key in users) {
+  		console.log(key);
+  	}
   });
 });
 
