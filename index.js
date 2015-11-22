@@ -45,6 +45,7 @@ io.on('connection', function(socket){
   
   socket.on('disconnect', function(){
   	console.log("SE DESCONECTO: " + socket.username);
+  	users.Remove(socket.username);
   });
 });
 
