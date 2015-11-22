@@ -43,7 +43,7 @@ io.on('connection', function(socket){
   	socket.username = username;
   	
   	console.log("Hay " + Object.keys(users).length + " usuarios conectados:");
-  	for key in Object.keys(users) {
+  	for var key in Object.keys(users) {
   		console.log(key);
   	}
   });
