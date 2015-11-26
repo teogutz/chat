@@ -37,6 +37,7 @@ io.on('connection', function(socket){
   	users[username] = socket;
   	socket.username = username;
   	socket.operador = operadores[0];
+  	console.log('SE ASIGNO ' + operadores[0].username + ' A ' + username);
   });
   
   socket.on('operador', function(username){
