@@ -41,7 +41,7 @@ io.on('connection', function(socket){
   });
   
   socket.on('operador', function(username){
-  	console.log('NUEVO USER: ' + username);
+  	console.log('NUEVO OPERADOR: ' + username);
   	users[username] = socket;
   	socket.username = username;
   	operadores[username] = socket;
