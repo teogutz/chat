@@ -38,7 +38,7 @@ io.on('connection', function(socket){
   	users[username] = socket;
   	for (var operador in operadores) {
   		socket.operador = operadores[operador];
-  		console.log('SE ASIGNO ' + operador.username + ' A ' + username);
+  		console.log('SE ASIGNO ' + operador + ' A ' + username);
   	}
   });
   
