@@ -6,17 +6,8 @@ app.get('/', function(req, res){
   res.sendfile('index.html');
 });
 
-// io.on('connection', function(socket){
-//   console.log('a user connected');
-//   socket.on('disconnect', function(){
-//     console.log('user disconnected');
-//   });
-//   socket.on('chat message', function(msg){
-//     console.log('message: ' + msg);
-//   });
-// });
-
 var users = {}
+var operadores = {}
 
 io.on('connection', function(socket){
 
@@ -37,10 +28,22 @@ io.on('connection', function(socket){
   	socketDestino.emit('mensajeRecibido', msg);
   });
   
+  socket.on('mensajeDeUsuario', function(mensaje){
+  	socket.operador.emit('mensajeRecibido', mensaje);
+  });
+  
   socket.on('username', function(username){
   	console.log('NUEVO USER: ' + username);
   	users[username] = socket;
   	socket.username = username;
+  	socket.operador = operadores[0];
+  });
+  
+  socket.on('operador', function(username){
+  	console.log('NUEVO USER: ' + username);
+  	users[username] = socket;
+  	socket.username = username;
+  	operadores[username] = socket;
   });
   
   socket.on('disconnect', function(){
