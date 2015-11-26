@@ -34,18 +34,18 @@ io.on('connection', function(socket){
   
   socket.on('username', function(username){
   	console.log('NUEVO USER: ' + username);
-  	users[username] = socket;
   	socket.username = username;
+  	users[username] = socket;
   	for (var operador in operadores) {
-  		socket.operador = operador;
+  		socket.operador = operadores[operador];
   		console.log('SE ASIGNO ' + operador.username + ' A ' + username);
   	}
   });
   
   socket.on('operador', function(username){
   	console.log('NUEVO OPERADOR: ' + username);
-  	users[username] = socket;
   	socket.username = username;
+  	users[username] = socket;
   	operadores[username] = socket;
   });
   
